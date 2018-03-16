@@ -1,4 +1,5 @@
 const Animal = require('./base')
+const css = require('./index.css')
 
 class Dog extends Animal{
     constructor(owner){
