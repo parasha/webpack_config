@@ -1,4 +1,5 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+// var Ex = require('extract-text-webpack-plugin');
 var path = require('path')
 
 module.exports = {
@@ -25,16 +26,16 @@ module.exports = {
                     }
                 }
             },
-            {
-                test: /\.css$/,
-                exclude: /(node_modules|bower_components)/,                
-                use: [ 'style-loader', 'css-loader' ]
-            }
+            // {
+            //     test: /\.css$/,
+            //     loader: Ex.extract('style-loader', 'css-loader', 'less-loader') // 单独打包出CSS，这里配置注意下
+            // }
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'webpackTest'
         }),
+        // new Ex("main.css"),
     ]
 }
