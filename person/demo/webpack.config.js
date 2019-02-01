@@ -1,9 +1,12 @@
 const path = require('path')
 
 const config = {
-    entry:'./src/index.js',
+    entry:{
+        main: './src/index.js',
+        other: './src/2.js'
+    },
     output:{
-        filename:'main.js',
+        filename:'[name].js',
         path: path.resolve(__dirname,'./dist')
     }
 }
