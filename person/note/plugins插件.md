@@ -23,7 +23,7 @@ new CleanWebpackPlugin([
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 /** 
- *  title：模板title
+ *  title：html title
     filename：输出的html文件名称
     chunks：包含的文件，可以entry和其他模块chunk的模块，插件导入到 模板时 没有排序
 */
@@ -31,4 +31,29 @@ new htmlWebpackPlugin({
     title: 'webpack 测试 demo',
     chunks: ['main','other']
 })
+~~~
+
+3. mini-css-extract-plugin
+css 文件单独提取(webpack 4.x)
+~~~js
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");//提取css到单独文件的插件
+
+module:{
+    use:[
+        {
+                test: /\.less$/,
+                exclude : '/node_modules',
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    ...
+                ]
+        }
+    ]
+},
+plugins:[
+    new MiniCssExtractPlugin({
+        filename: "css/[name].[hash:6].css",//都提到build目录下的css目录中
+    }),
+]
+
 ~~~
