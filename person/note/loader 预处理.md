@@ -26,3 +26,4 @@ module.exports = {
 除了使用 package.json 常见的 main 属性，还可以将普通的 npm 模块导出为 loader，做法是在 package.json 里定义一个 loader 字段。
 - 插件(plugin)可以为 loader 带来更多特性。
 - loader 能够产生额外的任意文件。
+
