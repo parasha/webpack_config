@@ -1,6 +1,6 @@
 <template>
   <div>
-    vue
+    <img src="./img/68362a61ly8fyl25xjymaj208c08cq4j.png">
   </div>
 </template>
 
