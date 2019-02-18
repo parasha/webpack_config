@@ -111,9 +111,9 @@ module.exports = {
             filename: "css/[name].[hash:6].css",//都提到build目录下的css目录中
         }),
         new htmlWebpackPlugin({
+            inject: true,
+            template: './index.html',
             title: 'webpack vue 测试 demo',
-            inject: 'body',
-            template: './index.html'
         })
     ]
 }
