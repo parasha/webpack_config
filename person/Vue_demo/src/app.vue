@@ -16,5 +16,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+img{
+    margin: 0 auto;
+    transform: rotate(45deg);
+}
 </style>
