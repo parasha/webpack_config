@@ -36,9 +36,10 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader?cacheDirectory=true',
+                    loader: 'babel-loader',
                     options: {
-                        presets: ['env']
+                        presets: ['env'],
+                        cacheDirectory: true
                     }
                 }
             },
