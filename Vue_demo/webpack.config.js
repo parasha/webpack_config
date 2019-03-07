@@ -26,39 +26,21 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.vue$/,
+                use: [{
+                    loader: 'vue-loader'
+                }
+                ]
+            },
+            {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: 'babel-loader?cacheDirectory=true',
                     options: {
                         presets: ['env']
                     }
                 }
-            },
-            {
-                test: /\.css$/,
-                exclude: '/node_modules/',
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: (loader) => [
-                                require('postcss-import')({ root: loader.resourcePath }),
-                                require('postcss-cssnext')(),
-                                require('autoprefixer')(),
-                                require('cssnano')()
-                            ]
-                        }
-                    }
-                ]
             },
             {
                 test: /\.less$/,
@@ -78,7 +60,6 @@ module.exports = {
                             plugins: (loader) => [
                                 require('postcss-import')({ root: loader.resourcePath }),
                                 require('postcss-cssnext')(),
-                                require('autoprefixer')(),
                                 require('cssnano')()
                             ]
                         }
@@ -92,19 +73,36 @@ module.exports = {
                 ]
             },
             {
+                test: /\.css$/,
+                exclude: '/node_modules/',
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: (loader) => [
+                                require('postcss-import')({ root: loader.resourcePath }),
+                                require('postcss-cssnext')(),
+                                require('cssnano')()
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.(png|jpg|gif)$/,
                 use: [
                     {
                         loader: 'file-loader',
                         options: {}
                     }
-                ]
-            },
-            {
-                test: /\.vue$/,
-                use: [{
-                    loader: 'vue-loader'
-                }
                 ]
             },
         ]
