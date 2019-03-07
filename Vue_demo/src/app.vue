@@ -1,6 +1,7 @@
 <template>
   <div>
     <img src="./img/68362a61ly8fyl25xjymaj208c08cq4j.png">
+    <span>webpack-dev-server 测试</span>
   </div>
 </template>
 
