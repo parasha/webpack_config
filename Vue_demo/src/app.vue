@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="./img/68362a61ly8fyl25xjymaj208c08cq4j.png">
-    {{name}}
+    <p>{{bar}}</p>
   </div>
 </template>
 
@@ -10,6 +10,13 @@ export default {
   data () {
     return {
     }
+  },
+  props:{
+    bar: String
+  },
+  created:function(){
+    console.log('axios',this.$http)
+    console.log('data',this.bar)
   },
   methods: {}
 }
