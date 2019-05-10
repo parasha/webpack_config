@@ -1,11 +1,13 @@
 <template>
-  <div>
-    <img src="./img/68362a61ly8fyl25xjymaj208c08cq4j.png">
-    <p>{{bar}}</p>
+  <div id='app'>
+    <Slide></Slide>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Slide from './components/slide/index.vue';
+
 export default {
   data () {
     return {
@@ -14,9 +16,11 @@ export default {
   props:{
     bar: String
   },
+  components:{
+    Slide
+  },
   created:function(){
-    console.log('axios',this.$http)
-    console.log('data',this.bar)
+    
   },
   methods: {}
 }

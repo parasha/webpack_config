@@ -1,27 +1,19 @@
-import Vue from 'vue'
-import Axios from 'axios'
+import Vue from 'vue';
+import app from './app.vue';
 
-Vue.prototype.$http = Axios
+import Axios from 'axios';
+Vue.prototype.$http = Axios;
 
-import app from './app.vue'
-console.log('页面加载开始')
+import router from './router';
 
-async function bar() {
-  return await 'bar'
-}
-
-async function foo() {
-  const val = await bar()
+async function main() {
   new Vue({
     render: h => h(app, {
-      props: {
-        bar: val
-      }
+      props: {}
     }),
-  }).$mount('#app')
-  console.log(val)
-  console.log('页面加载结束')
+    router,
+  }).$mount('#app');
 }
 
-foo()
+main();
 
