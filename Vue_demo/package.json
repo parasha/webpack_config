@@ -4,14 +4,16 @@
   "description": "webpack 构建的 vue 项目",
   "main": "index.js",
   "scripts": {
-    "start":"webpack-dev-server"
+    "start": "webpack-dev-server"
   },
   "author": "parasha",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.8",

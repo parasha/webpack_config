@@ -37,10 +37,16 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    options: {
+                    query:{
                         presets: ['env'],
-                        cacheDirectory: true
-                    }
+                        cacheDirectory: true,
+                        plugins: [
+                            ["transform-runtime", {
+                                polyfill: false,
+                                regenerator: true
+                            }]
+                        ]
+                    }                    
                 }
             },
             {
