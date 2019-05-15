@@ -1,34 +1,54 @@
 <template>
-  <div id='app'>
-    <Slide></Slide>
-    <router-view></router-view>
+  <div id="app">
+    <!-- <Slide></Slide>
+    <router-view></router-view>-->
+    <ul class="list" v-scroll-load='load'>
+      <li class="list-item">1</li>
+      <li class="list-item">2</li>
+      <li class="list-item">3</li>
+      <li class="list-item">4</li>
+      <li class="list-item">5</li>
+      <li class="list-item">6</li>
+      <li class="list-item">7</li>
+    </ul>
   </div>
 </template>
 
 <script>
-import Slide from './components/slide/index.vue';
+// import Slide from './components/slide/index.vue';
 
 export default {
-  data () {
-    return {
-    }
+  data() {
+    return {};
   },
-  props:{
+  props: {
     bar: String
   },
-  components:{
-    Slide
-  },
-  created:function(){
-    
-  },
-  methods: {}
-}
+  created: function() {},
+  methods: {
+    load:function(){
+      console.log('do loading...');
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
-img{
-    margin: 0 auto;
-    transform: rotate(45deg);
+.list {
+  display: block;
+  width: 100%;
+  overflow-y: scroll;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  .list-item {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 150px;
+    border-bottom: 1px solid #999999;
+    text-align: center;
+    line-height: 144px;
+  }
 }
 </style>
