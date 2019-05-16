@@ -14,14 +14,8 @@ module.exports = {
 
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, '../dist'),
         filename: 'js/index.[hash:6].js'
-    },
-    devServer: {
-        host: 'localhost',  // 访问地址
-        port: '8001',  // 访问端口
-        open: true, // 自动拉起浏览器
-        hot: true // 热加载
     },
     module: {
         rules: [
@@ -80,30 +74,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.css$/,
-                exclude: '/node_modules/',
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: (loader) => [
-                                require('postcss-import')({ root: loader.resourcePath }),
-                                require('postcss-cssnext')(),
-                                require('cssnano')()
-                            ]
-                        }
-                    }
-                ]
-            },
-            {
                 test: /\.(png|jpg|gif)$/,
                 use: [
                     {
@@ -127,6 +97,5 @@ module.exports = {
             template: './index.html',
             title: 'webpack vue 测试 demo',
         }),
-        new webpack.HotModuleReplacementPlugin() //热更新
     ]
 }

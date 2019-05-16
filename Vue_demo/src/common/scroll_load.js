@@ -4,7 +4,10 @@ const scroll_load = {
     Vue.directive('ScrollLoad',this)
   },
   bind(el,binding,vnode){
-    console.log('bind',el,binding,vnode,arguments)
+    console.log('bind-el',el)
+    console.log('bind-binding',binding)
+    console.log('bind-vnode',vnode)
+
     binding.value()
   }
 }
