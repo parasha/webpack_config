@@ -1,8 +1,6 @@
 <template>
-  <div id="app">
-    <!-- <Slide></Slide>
-    <router-view></router-view>-->
-    <ul class="list" v-scroll-load='load'>
+  <div id="app" >
+    <ul class="list" v-scroll-load="load">
       <li class="list-item">1</li>
       <li class="list-item">2</li>
       <li class="list-item">3</li>
@@ -10,6 +8,12 @@
       <li class="list-item">5</li>
       <li class="list-item">6</li>
       <li class="list-item">7</li>
+      <li class="list-item">8</li>
+      <li class="list-item">9</li>
+      <li class="list-item">10</li>
+      <li class="list-item">11</li>
+      <li class="list-item">12</li>
+      <li class="list-item">13</li>
     </ul>
   </div>
 </template>
@@ -26,18 +30,18 @@ export default {
   },
   created: function() {},
   methods: {
-    load:function(){
-      console.log('do loading...');
+    load: function() {
+      console.log("do loading...");
     }
   }
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .list {
+  background-color: white;
   display: block;
   width: 100%;
-  overflow-y: scroll;
   list-style: none;
   margin: 0;
   padding: 0;
