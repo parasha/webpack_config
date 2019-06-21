@@ -15,7 +15,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: 'js/index.[hash:6].js'
+        filename: 'js/[name].[hash:6].js'
     },
     module: {
         rules: [
@@ -31,7 +31,7 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    query:{
+                    query: {
                         presets: ['env'],
                         cacheDirectory: true,
                         plugins: [
@@ -40,7 +40,7 @@ module.exports = {
                                 regenerator: true
                             }]
                         ]
-                    }                    
+                    }
                 }
             },
             {
@@ -88,7 +88,7 @@ module.exports = {
         new VueLoaderPlugin(),
         new CleanWebpackPlugin([
             '../dist'
-        ],{allowExternal:true}),
+        ], { allowExternal: true }),
         new MiniCssExtractPlugin({
             filename: "css/[name].[hash:6].css",//都提到build目录下的css目录中
         }),
@@ -101,17 +101,22 @@ module.exports = {
     // 还是没怎么搞明白
     optimization: {
         splitChunks: {
-          chunks: 'all',
-          automaticNameDelimiter: '.',
-          cacheGroups: {
-            vendors: {
-              test: /[\\/]node_modules[\\/]/,
-              priority: 1
+            // chunks: 'all',
+            // automaticNameDelimiter: '.',
+            cacheGroups: {
+                vendors: {
+                    chunks: "all",
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
+                    maxInitialRequests: 5,
+                    minSize: 0,
+                    priority: 100,
+                }
             }
-          }
         },
-        runtimeChunk: {
-          name: entrypoint => `manifest.${entrypoint.name}`
-        }
-      },
+        // runtimeChunk: {
+        //     name: entrypoint => `manifest.${entrypoint.name}`
+        // }
+    },
 }
