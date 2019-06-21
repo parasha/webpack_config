@@ -97,5 +97,16 @@ module.exports = {
             template: './index.html',
             title: 'webpack vue 测试 demo',
         }),
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    name: "commons",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
+        }
+    },
 }
