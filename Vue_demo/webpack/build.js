@@ -87,8 +87,8 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new CleanWebpackPlugin([
-            './dist'
-        ]),
+            '../dist'
+        ],{allowExternal:true}),
         new MiniCssExtractPlugin({
             filename: "css/[name].[hash:6].css",//都提到build目录下的css目录中
         }),
@@ -98,15 +98,20 @@ module.exports = {
             title: 'webpack vue 测试 demo',
         }),
     ],
+    // 还是没怎么搞明白
     optimization: {
         splitChunks: {
-            cacheGroups: {
-                commons: {
-                    name: "commons",
-                    chunks: "initial",
-                    minChunks: 2
-                }
+          chunks: 'all',
+          automaticNameDelimiter: '.',
+          cacheGroups: {
+            vendors: {
+              test: /[\\/]node_modules[\\/]/,
+              priority: 1
             }
+          }
+        },
+        runtimeChunk: {
+          name: entrypoint => `manifest.${entrypoint.name}`
         }
-    },
+      },
 }
