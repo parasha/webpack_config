@@ -101,22 +101,24 @@ module.exports = {
     // 还是没怎么搞明白
     optimization: {
         splitChunks: {
-            // chunks: 'all',
-            // automaticNameDelimiter: '.',
             cacheGroups: {
-                vendors: {
+                vendor: {
                     chunks: "all",
                     test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
+                    name:'vendor',
                     minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
-                    maxInitialRequests: 5,
                     minSize: 0,
-                    priority: 100,
+                    priority: 1,
+                },
+                common:{
+                    chunks: "all",
+                    test: /[\\/]src[\\/]/,
+                    name:'common',
+                    minChunks: 2, 
+                    minSize: 0,
+                    priority: 1,
                 }
             }
         },
-        // runtimeChunk: {
-        //     name: entrypoint => `manifest.${entrypoint.name}`
-        // }
     },
 }

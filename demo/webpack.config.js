@@ -11,7 +11,7 @@ const config = {
         other: './src/2.js'
     },
     output:{
-        filename:'js/[name].[hash:6].[id].js',
+        filename:'js/[name].[hash:6].js',
         path: path.resolve(__dirname,'./dist'),
         // publicath: "https://cdn.example.com/assets/"
     },
@@ -94,8 +94,31 @@ const config = {
         }),
         new htmlWebpackPlugin({
             title: 'webpack 测试 demo',
-        })
-    ]
+        }),
+        
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    chunks: "all",
+                    test: /[\\/]node_modules[\\/]/,
+                    name:'vendor',
+                    minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
+                    minSize: 0,
+                    priority: 1,
+                },
+                common:{
+                    chunks: "all",
+                    test: /[\\/]src[\\/]/,
+                    name:'common',
+                    minChunks: 2, //被不同entry引用次数(import),1次的话没必要提取
+                    minSize: 0,
+                    priority: 1,
+                }
+            }
+        },
+    },
 }
 
 module.exports = config
