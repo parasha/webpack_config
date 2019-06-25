@@ -104,7 +104,7 @@ const config = {
                     chunks: "all",
                     test: /[\\/]node_modules[\\/]/,
                     name:'vendor',
-                    minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
+                    minChunks: 1, //最小应该被引用的次数，默认就是1
                     minSize: 0,
                     priority: 1,
                 },
