@@ -85,6 +85,14 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            API: JSON.stringify('https://getway.qschou.com')
+        }),
+        // 以全局的模式直接使用模块
+        new webpack.ProvidePlugin({
+            Vue: ['vue/dist/vue.esm.js', 'default'],
+            Axios:'axios'
+        }),
         new VueLoaderPlugin(),
         new CleanWebpackPlugin([
             '../dist'
@@ -105,16 +113,16 @@ module.exports = {
                 vendor: {
                     chunks: "all",
                     test: /[\\/]node_modules[\\/]/,
-                    name:'vendor',
+                    name: 'vendor',
                     minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
                     minSize: 0,
                     priority: 1,
                 },
-                common:{
+                common: {
                     chunks: "all",
                     test: /[\\/]src[\\/]/,
-                    name:'common',
-                    minChunks: 2, 
+                    name: 'common',
+                    minChunks: 2,
                     minSize: 0,
                     priority: 1,
                 }
