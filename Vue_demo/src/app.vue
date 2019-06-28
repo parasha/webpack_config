@@ -1,5 +1,6 @@
 <template>
   <div id="app" >
+    <img src="./img/head.png" alt="">
     <ul class="list" v-scroll-load="load">
       <li class="list-item">1</li>
       <li class="list-item">2</li>

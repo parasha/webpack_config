@@ -78,7 +78,10 @@ module.exports = {
                 use: [
                     {
                         loader: 'file-loader',
-                        options: {}
+                        options: {
+                            name: '[path]/[name].[hash].[ext]',
+                            context:'src/'
+                        }
                     }
                 ]
             },
