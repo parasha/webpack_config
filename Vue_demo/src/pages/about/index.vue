@@ -1,19 +1,20 @@
 <template>
   <div>
-    app:
-    <router-view></router-view>
+    About
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
+  data () {
+    return {
+    }
   },
 
   methods: {}
-};
+}
 </script>
 
 <style lang="less" scoped>
+
 </style>

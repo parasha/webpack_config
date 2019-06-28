@@ -1,19 +1,22 @@
 <template>
   <div>
-    app:
-    <router-view></router-view>
+    User
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
+  data () {
+    return {
+    }
   },
-
+  created() {
+    console.log(this.$route.params)
+  },
   methods: {}
-};
+}
 </script>
 
 <style lang="less" scoped>
+
 </style>
