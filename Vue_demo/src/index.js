@@ -4,8 +4,6 @@ import app from './app.vue';
 
 // import router from './router';
 import scroll_load from './common/scroll_load'
-
-console.log(Vue,Vue.use);
 Vue.use(scroll_load);
 
 
