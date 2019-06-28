@@ -34,9 +34,12 @@ const config = {
                     minChunks: 2,
                     minSize: 0,
                     priority: 1,
-                }
+                },
             }
         },
+        runtimeChunk: {
+            name: 'runtime'
+        }
     },
 }
 

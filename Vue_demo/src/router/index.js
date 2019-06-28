@@ -1,8 +1,9 @@
 import vue_router from 'vue-router';
 
 import Home from '../pages/home/index.vue';
-import User from '../pages/user/index.vue';
-import About from '../pages/about/index.vue';
+
+const User = () => import(/* webpackChunkName: "user" */'../pages/user/index.vue');
+const About = () => import(/* webpackChunkName: "about" */'../pages/about/index.vue');
 
 Vue.use(vue_router);
 
