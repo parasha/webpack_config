@@ -28,3 +28,5 @@ config = {
   },
 }
 ~~~
+- 处理异步加载，需要安装 plugin-syntax-dynamic-import 这个 babel 插件
+- chunk 概念

@@ -57,3 +57,19 @@ plugins:[
 ]
 
 ~~~
+
+4. DefinePlugin
+提供一些全局变量，但是数据类型很怪
+~~~JavaScript
+    new webpack.DefinePlugin({
+        API: JSON.stringify('https://getway.qschou.com')
+    }),
+~~~
+5. ProvidePlugin
+提供全局模块
+~~~JavaScript
+    new webpack.ProvidePlugin({
+      Vue: ['vue/dist/vue.esm.js', 'default'],
+      Axios: 'axios'
+    }),
+~~~
