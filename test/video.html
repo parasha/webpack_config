@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <video control id='Movie' style='display:block'></video>
+  
+</body>
+
+<script>
+
+  //https://www.villainhr.com/page/2017/03/31/%E5%85%A8%E9%9D%A2%E8%BF%9B%E9%98%B6%20H5%20%E7%9B%B4%E6%92%AD
+
+  // video 标签
+  var video = document.querySelector('#Movie');
+  // MedioSource
+  var mediaSource = new MediaSource();
+  console.log('isSupport',MediaSource.isTypeSupported('video/mp4; codecs="avc1.4D4028, mp4a.40.2"'))
+  // 通过 URL.createObjectURL 将 video.src 和 mediaSource 关联起来
+  // 这个时候，mediaSource 和 video.src 还没有实际连接
+  video.src = URL.createObjectURL(mediaSource);
+  // mediaSource 的 sourceopen 事件触发，video 与 sourceMedia 链接
+  // 此时可以关闭 URL 对象
+  mediaSource.addEventListener('sourceopen', mediaSourceOpen);
+
+
+  function mediaSourceOpen(e) {
+    console.log('mediaSource open', e)
+    // 释放 createObjectURL 创建的 URL 对象
+    URL.revokeObjectURL(video.src);
+
+    var mime = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+    // 新建一个 sourceBuffer(编码器)
+    var sourceBuffer = mediaSource.addSourceBuffer(mime);
+
+    //  通过请求获取 视频流
+    fetch('./movie.mp4').then(res => {
+      return res.arrayBuffer();
+    }).then(resBuffer => {
+      sourceBuffer.appendBuffer(resBuffer);
+      // 每一次流有变化的时候，检测一下视频流是否结束
+      sourceBuffer.addEventListener('updateend', function (e) {
+        // 是否有持续更新的流
+        if (!sourceBuffer.updating && mediaSource.readyState === 'open') {
+          // 没有，则中断连接
+          mediaSource.endOfStream();
+          video.play();
+        }
+      });
+    })
+  }
+
+
+
+</script>
+
+</html>
