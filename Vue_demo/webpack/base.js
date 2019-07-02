@@ -14,9 +14,9 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name].[hash:6].js'
   },
-  resolve: { // 解析 TS
-    extensions: ['.ts', '.tsx', '.js', '.jsx']
-  },
+  // resolve: { // 解析 TS
+  //   extensions: ['.ts', '.tsx', '.js', '.jsx']
+  // },
   module: {
     rules: [
       {
@@ -26,10 +26,10 @@ module.exports = {
         }
         ]
       },
-      { 
-        test: /\.tsx?$/, // 解析 TS
-        loader: 'awesome-typescript-loader'
-      },
+      // { 
+      //   test: /\.tsx?$/, // 解析 TS
+      //   loader: 'awesome-typescript-loader'
+      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,
