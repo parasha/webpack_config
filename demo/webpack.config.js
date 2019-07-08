@@ -8,7 +8,8 @@ const config = {
     mode: 'production',
     entry:{
         main: './src/index.js',
-        other: './src/2.js'
+        common: './src/common.js'
+        // other: './src/2.js'
     },
     output:{
         filename:'js/[name].[hash:6].js',
@@ -17,16 +18,16 @@ const config = {
     },
     module:{
         rules:[
-            {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                use:{
-                    loader: 'babel-loader',
-                    options:{
-                        presets:['env']
-                    }
-                }
-            },
+            // {
+            //     test: /\.js$/,
+            //     exclude: /(node_modules|bower_components)/,
+            //     use:{
+            //         loader: 'babel-loader',
+            //         options:{
+            //             presets:['env']
+            //         }
+            //     }
+            // },
             {
                 test: /\.css$/,
                 exclude: '/node_modules/',
@@ -98,6 +99,7 @@ const config = {
         
     ],
     optimization: {
+        minimize: false,
         splitChunks: {
             cacheGroups: {
                 vendor: {

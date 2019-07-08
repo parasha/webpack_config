@@ -25,7 +25,10 @@ const config = {
             API: JSON.stringify('')
         }),
         new webpack.HotModuleReplacementPlugin() //热更新
-    ]
+    ],
+    optimization: {
+        minimize: false
+    }
 }
 
-module.exports = merge(base,config)
+module.exports = merge(base, config)
