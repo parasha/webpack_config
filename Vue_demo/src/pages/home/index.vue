@@ -17,10 +17,11 @@ export default {
   },
   mounted: function() {
     console.log("options", this.$options);
+    console.log('store.vm',this.$store._vm)
   },
   methods: {
     add() {
-      this.$store.commit("increment");
+      this.$store._vm.$data.$$state.count++
     }
   }
 };

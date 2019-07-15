@@ -1,17 +1,23 @@
 const path = require('path')
-
+ 
 const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");//提取css到单独文件的插件
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
+const staticPath = '../../../../static/';
+const configPath = '../../../config/';
+const projectPath = 'project/projwallet/index/'
+const htmlPath = 'index.html';
+
 module.exports = {
   entry: {
-    main: './src/index.js',
+    main: path.resolve(__dirname, '../index.js'),
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: 'js/[name].[hash:6].js'
+    path: path.resolve(__dirname, staticPath + 'js/v8/' + projectPath),
+    filename: '[name].[hash:6].js',
+    publicPath: 'https://static2.qschou.com/js/v8/' + projectPath
   },
   module: {
     rules: [
@@ -83,15 +89,20 @@ module.exports = {
     // 以全局的模式直接使用模块
     new webpack.ProvidePlugin({
       Vue: ['vue/dist/vue.esm.js', 'default'],
-      Axios: 'axios'
+      // Axios: 'axios'
     }),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/[name].[hash:6].css",//都提到build目录下的css目录中
+      filename: path.relative(
+        path.resolve(__dirname, staticPath + 'js/v8/' + projectPath) , 
+        path.resolve(__dirname, staticPath + 'css/v8/' + projectPath + 'css/[name].[hash:6].css')
+      ),
+      // filename: "css/[name].[hash:6].css",//都提到build目录下的css目录中
     }),
     new htmlWebpackPlugin({
       inject: true,
-      template: './index.html',
+      filename: path.resolve(__dirname, staticPath + 'html/v8/' + projectPath+ htmlPath),
+      template: path.resolve(__dirname, configPath + 'baseTpl.html'),
       title: 'webpack vue 测试 demo',
     }),
   ],
