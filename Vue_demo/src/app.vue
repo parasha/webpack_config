@@ -14,5 +14,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+html,body{
+  background-color: aqua
+}
 </style>

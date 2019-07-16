@@ -7,8 +7,9 @@ const config = {
     mode: 'development',
     devServer: {
         https: true,
-        host: 'localhost',  // 访问地址
-        port: '8001',  // 访问端口
+        // host: 'localhost',  // 访问地址
+        host: 'm2.qschou.com',  // 访问地址
+        // port: '8001',  // 访问端口
         open: true, // 自动拉起浏览器
         hot: true, // 热加载
         proxy: {
