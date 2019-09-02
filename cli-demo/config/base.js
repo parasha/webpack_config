@@ -43,9 +43,9 @@ module.exports = {
             },
         }
     },
-    // runtimeChunk: {
-    //     name: 'runtime'
-    // }
+    runtimeChunk: {
+        name: 'runtime'
+    }
   },
   plugins: [
     new webpack.ProvidePlugin({
