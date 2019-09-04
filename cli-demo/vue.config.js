@@ -1,4 +1,4 @@
-const webpack_base = require('./config/base');
+const webpack_base = require('./config/webpack.base');
 
 module.exports = {
   publicPath: '',

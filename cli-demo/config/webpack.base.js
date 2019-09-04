@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 
-module.exports = {
+const config = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name].[hash:6].js'
@@ -62,3 +62,5 @@ module.exports = {
     }),
   ]
 };
+
+module.exports = config;
