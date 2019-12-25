@@ -11,7 +11,7 @@ const config = {
   devServer: {
     https: true,
     host: 'localhost',  // 访问地址
-    port: '8001',  // 访问端口
+    port: '8001',  // 访问端口， 使用 443 
     open: true, // 自动拉起浏览器
     hot: true, // 热加载
     proxy: {
@@ -24,30 +24,31 @@ const config = {
   },
   optimization: {
     splitChunks: {
-        cacheGroups: {
-            vendor: {
-                chunks: "all",
-                test: /[\\/]node_modules[\\/]/,
-                name: 'node_modules',
-                minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
-                minSize: 0,
-                priority: 1,
-            },
-            common: {
-                chunks: "all",
-                test: /[\\/]src[\\/]/,
-                name: 'common',
-                minChunks: 2,
-                minSize: 0,
-                priority: 1,
-            },
-        }
+      cacheGroups: {
+        vendor: {
+          chunks: "all",
+          test: /[\\/]node_modules[\\/]/,
+          name: 'node_modules',
+          minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取
+          minSize: 0,
+          priority: 1,
+        },
+        common: {
+          chunks: "all",
+          test: /[\\/]src[\\/]/,
+          name: 'common',
+          minChunks: 2,
+          minSize: 0,
+          priority: 1,
+        },
+      }
     },
     runtimeChunk: {
-        name: 'runtime'
+      name: 'runtime'
     }
   },
   plugins: [
+    // 提供全局变量
     new webpack.ProvidePlugin({
       Vue: ['vue/dist/vue.esm.js', 'default'],
       Axios: 'axios'
@@ -58,9 +59,18 @@ const config = {
       title: 'webpack vue-cli@3.0 测试 demo',
     }),
     new webpack.DefinePlugin({
-      API: process.env.NODE_ENV == 'production' ? JSON.stringify('https://getway.qschou.com') : JSON.stringify('')
+      API: process.env.NODE_ENV == 'production' ? JSON.stringify('/api') : JSON.stringify('/test-api')
     }),
-  ]
+  ],
+  resolve: {
+    // 别名
+    alias: {
+      '@': resolve('src'),
+      '@component': resolve('src/component'),
+      '@common': resolve('src/common'),
+      '@pages': resolve('src/pages')
+    }
+  }
 };
 
 module.exports = config;
