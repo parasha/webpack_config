@@ -7,11 +7,14 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: {
-    main: './src/index.js',
+    // main: './src/index.js',
+    dynamic: path.resolve(__dirname, '../src/components/dynamic/index.js'),
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'js/[name].[hash:6].js'
+    filename: 'js/[name].[hash:6].js',
+    library: 'MyComponent',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
